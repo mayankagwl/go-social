@@ -40,21 +40,4 @@ type SocialDriver struct {
 	Expiry       time.Time `json:"expiry"`
 	IdToken      *string   `json:"id_token"`
 	TokenSecret  *string   `json:"token_secret"`
-}
-
-type TokenQueryString struct {
-	OAuthToken             string    `json:"OAuthToken"`
-	TokenType              *string   `json:"TokenType"`
-	RefreshToken           *string   `json:"RefreshToken"`
-	ExpiresOn              time.Time `json:"ExpiresOn"`
-	IdToken                *string   `json:"Id"`
-	UID                    *string   `json:"UID"`
-	ConsumerKey            *string   `json:"ConsumerKey"`
-	ConsumerSecret         *string   `json:"ConsumerSecret"`
-	ConsumerId             *string   `json:"ConsumerId"`
-	XOAuthYahooGuid        *string   `json:"XOAuth_Yahoo_Guid"`
-	SessionHandle          *string   `json:"SessionHandle"`
-	SessionHandleExpiresOn time.Time `json:"SessionHandleExpiresOn"`
-	AuthenticationToken    *string   `json:"AuthenticationToken"`
-	TokenSecret            *string   `json:"TokenSecret"`
 }*/

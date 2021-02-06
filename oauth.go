@@ -189,30 +189,6 @@ func (c *Config) getProfileInfo(token interface{}, endpoint string, queryString,
 	return profileData, nil
 }
 
-/*func (c *Config) GetTokenQueryString(oauthToken interface{}) string {
-	tokenBytes, _ := json.Marshal(oauthToken)
-	var t Token
-	json.Unmarshal(tokenBytes, &t)
-	tokenQS := TokenQueryString{
-		OAuthToken:             t.AccessToken,
-		TokenType:              t.TokenType,
-		RefreshToken:           t.RefreshToken,
-		ExpiresOn:              t.Expiry,
-		IdToken:                t.IdToken,
-		UID:                    nil,
-		ConsumerKey:            &c.ClientID,
-		ConsumerSecret:         &c.ClientSecret,
-		ConsumerId:             &c.ApplicationKey,
-		XOAuthYahooGuid:        nil,
-		SessionHandle:          t.RefreshToken,
-		SessionHandleExpiresOn: time.Time{},
-		AuthenticationToken:    nil,
-		TokenSecret:            t.TokenSecret,
-	}
-	tokenQSStr, _ := json.Marshal(tokenQS)
-	return string(tokenQSStr)
-}*/
-
 func (c *Config) replacePlaceHolderInMap(mapping map[string]string, accessToken string) map[string]string {
 	if mapping != nil && len(mapping) > 0 {
 		for k, v := range mapping {
