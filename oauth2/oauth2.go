@@ -101,7 +101,7 @@ const (
 	// AuthStyleInHeader sends the client_id and client_password
 	// using HTTP Basic Authorization. This is an optional style
 	// described in the OAuth2 RFC 6749 section 2.3.1.
-	AuthStyleInParam AuthStyle = 3
+	AuthStyleInParams AuthStyle = 3
 )
 
 var (
@@ -233,8 +233,8 @@ func (c *Config) Exchange(ctx context.Context, code string, opts ...AuthCodeOpti
 // The token will auto-refresh as necessary. The underlying
 // HTTP transport will be obtained using the provided context.
 // The returned client and its Transport should not be modified.
-func (c *Config) Client(ctx context.Context, t *Token) *http.Client {
-	return NewClient(ctx, c.TokenSource(ctx, t))
+func (c *Config) Client(ctx context.Context, t *Token, header map[string]string) *http.Client {
+	return NewClient(ctx, c.TokenSource(ctx, t), header)
 }
 
 // TokenSource returns a TokenSource that returns t until t expires,
@@ -344,14 +344,15 @@ var HTTPClient internal.ContextKey
 // As a special case, if src is nil, a non-OAuth2 client is returned
 // using the provided context. This exists to support related OAuth2
 // packages.
-func NewClient(ctx context.Context, src TokenSource) *http.Client {
+func NewClient(ctx context.Context, src TokenSource, headers map[string]string) *http.Client {
 	if src == nil {
 		return internal.ContextClient(ctx)
 	}
 	return &http.Client{
 		Transport: &Transport{
-			Base:   internal.ContextClient(ctx).Transport,
-			Source: ReuseTokenSource(nil, src),
+			Base:    internal.ContextClient(ctx).Transport,
+			Source:  ReuseTokenSource(nil, src),
+			Headers: headers,
 		},
 	}
 }

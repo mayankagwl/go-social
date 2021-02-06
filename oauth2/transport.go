@@ -25,6 +25,8 @@ type Transport struct {
 	// Base is the base RoundTripper used to make HTTP requests.
 	// If nil, http.DefaultTransport is used.
 	Base http.RoundTripper
+
+	Headers map[string]string
 }
 
 // RoundTrip authorizes and authenticates the request with an
@@ -48,8 +50,13 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	req2 := cloneRequest(req) // per RoundTripper contract
+	//r.Header.Set("Authorization", t.Type()+" "+t.AccessToken)
 	token.SetAuthHeader(req2)
-
+	if len(t.Headers) > 0 {
+		for k, v := range t.Headers {
+			req2.Header.Set(k, v)
+		}
+	}
 	// req.Body is assumed to be closed by the base RoundTripper.
 	reqBodyClosed = true
 	return t.base().RoundTrip(req2)
