@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mayankagwl/go-social/oauth2/internal"
+	"github.com/mayankagwl/go-social/internal/oauth2/internal"
 )
 
 // expiryDelta determines how earlier a token should be considered

@@ -102,7 +102,7 @@ func (e *expirationTime) UnmarshalJSON(b []byte) error {
 // Endpoint.AuthStyle.
 func RegisterBrokenAuthHeaderProvider(tokenURL string) {}
 
-// AuthStyle is a copy of the github.com/mayankagwl/go-social/oauth2 package's AuthStyle type.
+// AuthStyle is a copy of the github.com/mayankagwl/go-social/internal/oauth2 package's AuthStyle type.
 type AuthStyle int
 
 const (

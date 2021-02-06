@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mayankagwl/go-social/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2"
 )
 
 func ExampleConfig() {
@@ -44,7 +44,7 @@ func ExampleConfig() {
 		log.Fatal(err)
 	}
 
-	client := conf.Client(ctx, tok)
+	client := conf.Client(ctx, tok, nil)
 	client.Get("...")
 }
 
@@ -84,6 +84,6 @@ func ExampleConfig_customHTTP() {
 		log.Fatal(err)
 	}
 
-	client := conf.Client(ctx, tok)
+	client := conf.Client(ctx, tok, nil)
 	_ = client
 }

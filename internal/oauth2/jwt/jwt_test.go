@@ -15,8 +15,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mayankagwl/go-social/oauth2"
-	"github.com/mayankagwl/go-social/oauth2/jws"
+	"github.com/mayankagwl/go-social/internal/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2/jws"
 )
 
 var dummyPrivateKey = []byte(`-----BEGIN RSA PRIVATE KEY-----

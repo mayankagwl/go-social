@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mayankagwl/go-social/oauth2/internal"
+	"github.com/mayankagwl/go-social/internal/oauth2/internal"
 )
 
 type mockTransport struct {
@@ -448,7 +448,7 @@ func TestTokenRefreshRequest(t *testing.T) {
 	}))
 	defer ts.Close()
 	conf := newConf(ts.URL)
-	c := conf.Client(context.Background(), &Token{RefreshToken: "REFRESH_TOKEN"})
+	c := conf.Client(context.Background(), &Token{RefreshToken: "REFRESH_TOKEN"}, nil)
 	c.Get(ts.URL + "/somethingelse")
 }
 
@@ -471,7 +471,7 @@ func TestFetchWithNoRefreshToken(t *testing.T) {
 	}))
 	defer ts.Close()
 	conf := newConf(ts.URL)
-	c := conf.Client(context.Background(), nil)
+	c := conf.Client(context.Background(), nil, nil)
 	_, err := c.Get(ts.URL + "/somethingelse")
 	if err == nil {
 		t.Errorf("Fetch should return an error if no refresh token is set")
@@ -555,7 +555,7 @@ func TestConfigClientWithToken(t *testing.T) {
 	defer ts.Close()
 	conf := newConf(ts.URL)
 
-	c := conf.Client(context.Background(), tok)
+	c := conf.Client(context.Background(), tok, nil)
 	req, err := http.NewRequest("GET", ts.URL, nil)
 	if err != nil {
 		t.Error(err)

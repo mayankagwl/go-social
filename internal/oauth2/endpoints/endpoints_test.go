@@ -7,7 +7,7 @@ package endpoints
 import (
 	"testing"
 
-	"github.com/mayankagwl/go-social/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2"
 )
 
 func TestAWSCognitoEndpoint(t *testing.T) {

@@ -19,9 +19,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mayankagwl/go-social/oauth2"
-	"github.com/mayankagwl/go-social/oauth2/internal"
-	"github.com/mayankagwl/go-social/oauth2/jws"
+	"github.com/mayankagwl/go-social/internal/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2/internal"
+	"github.com/mayankagwl/go-social/internal/oauth2/jws"
 )
 
 var (
@@ -88,7 +88,7 @@ func (c *Config) TokenSource(ctx context.Context) oauth2.TokenSource {
 //
 // The returned client and its Transport should not be modified.
 func (c *Config) Client(ctx context.Context) *http.Client {
-	return oauth2.NewClient(ctx, c.TokenSource(ctx))
+	return oauth2.NewClient(ctx, c.TokenSource(ctx), nil)
 }
 
 // jwtSource is a source that always does a signed JWT request for a token.
@@ -103,7 +103,7 @@ func (js jwtSource) Token() (*oauth2.Token, error) {
 	if err != nil {
 		return nil, err
 	}
-	hc := oauth2.NewClient(js.ctx, nil)
+	hc := oauth2.NewClient(js.ctx, nil, nil)
 	claimSet := &jws.ClaimSet{
 		Iss:           js.conf.Email,
 		Scope:         strings.Join(js.conf.Scopes, " "),

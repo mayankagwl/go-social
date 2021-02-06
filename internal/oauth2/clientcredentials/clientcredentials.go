@@ -11,7 +11,7 @@
 // server.
 //
 // See https://tools.ietf.org/html/rfc6749#section-4.4
-package clientcredentials // import "github.com/mayankagwl/go-social/oauth2/clientcredentials"
+package clientcredentials // import "github.com/mayankagwl/go-social/internal/oauth2/clientcredentials"
 
 import (
 	"context"
@@ -20,8 +20,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/mayankagwl/go-social/oauth2"
-	"github.com/mayankagwl/go-social/oauth2/internal"
+	"github.com/mayankagwl/go-social/internal/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2/internal"
 )
 
 // Config describes a 2-legged OAuth2 flow, with both the
@@ -64,7 +64,7 @@ func (c *Config) Token(ctx context.Context) (*oauth2.Token, error) {
 //
 // The returned Client and its Transport should not be modified.
 func (c *Config) Client(ctx context.Context) *http.Client {
-	return oauth2.NewClient(ctx, c.TokenSource(ctx))
+	return oauth2.NewClient(ctx, c.TokenSource(ctx), nil)
 }
 
 // TokenSource returns a TokenSource that returns t until t expires,

@@ -70,7 +70,7 @@ var cancelOnce sync.Once
 // Deprecated: use contexts for cancellation instead.
 func (t *Transport) CancelRequest(req *http.Request) {
 	cancelOnce.Do(func() {
-		log.Printf("deprecated: github.com/mayankagwl/go-social/oauth2: Transport.CancelRequest no longer does anything; use contexts")
+		log.Printf("deprecated: github.com/mayankagwl/go-social/internal/oauth2: Transport.CancelRequest no longer does anything; use contexts")
 	})
 }
 

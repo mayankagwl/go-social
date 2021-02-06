@@ -8,7 +8,7 @@ package endpoints
 import (
 	"strings"
 
-	"github.com/mayankagwl/go-social/oauth2"
+	"github.com/mayankagwl/go-social/internal/oauth2"
 )
 
 // Amazon is the endpoint for Amazon.
