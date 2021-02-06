@@ -7,7 +7,7 @@ package jwt_test
 import (
 	"context"
 
-	"github.com/mayankagwl/go-social/oauth2/jwt"
+	"github.com/mayankagwl/go-social/internal/oauth2/jwt"
 )
 
 func ExampleJWTConfig() {
