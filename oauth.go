@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 )
 
 var tokenAuthMap = map[string]oauth2.AuthStyle{
@@ -190,7 +189,7 @@ func (c *Config) getProfileInfo(token interface{}, endpoint string, queryString,
 	return profileData, nil
 }
 
-func (c *Config) GetTokenQueryString(oauthToken interface{}) string {
+/*func (c *Config) GetTokenQueryString(oauthToken interface{}) string {
 	tokenBytes, _ := json.Marshal(oauthToken)
 	var t Token
 	json.Unmarshal(tokenBytes, &t)
@@ -212,7 +211,7 @@ func (c *Config) GetTokenQueryString(oauthToken interface{}) string {
 	}
 	tokenQSStr, _ := json.Marshal(tokenQS)
 	return string(tokenQSStr)
-}
+}*/
 
 func (c *Config) replacePlaceHolderInMap(mapping map[string]string, accessToken string) map[string]string {
 	if mapping != nil && len(mapping) > 0 {

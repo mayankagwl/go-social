@@ -1,7 +1,5 @@
 package oauth
 
-import "time"
-
 type Config struct {
 	driver         *SocialDriver
 	ClientID       string
@@ -35,7 +33,7 @@ type SocialDriver struct {
 	Mapping                  map[string]string `bson:"Mapping`
 }
 
-type Token struct {
+/*type Token struct {
 	AccessToken  string    `json:"access_token"`
 	TokenType    *string   `json:"token_type"`
 	RefreshToken *string   `json:"refresh_token"`
@@ -59,4 +57,4 @@ type TokenQueryString struct {
 	SessionHandleExpiresOn time.Time `json:"SessionHandleExpiresOn"`
 	AuthenticationToken    *string   `json:"AuthenticationToken"`
 	TokenSecret            *string   `json:"TokenSecret"`
-}
+}*/
